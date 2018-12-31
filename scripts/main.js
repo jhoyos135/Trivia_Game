@@ -11,11 +11,54 @@ let main = document.querySelector('#main');
 
 class UI {
 
-    static timeout() {};
+    static timeout() {
+        unanswered++;
+        gameHTML = `
 
-    static win() {};
+        <p class='text-center timer-p'>
+            Time Remaining: <span class='timer'> ${counter} </span>
+        </p>
+        <p class='text-center'>You ran out of time!  The correct answer was:
+        ${correctAnswers[questionCounter]} </p>
+        <img class='center-block img-wrong' src='../assets/images/x.gif'>
 
-    static loss() {};
+        `
+        main.innerHTML = gameHTML;
+        setTimeout(Helper.wait, 3000);
+
+    };
+
+    static win() {
+        correct++;
+        gameHTML = `
+
+        <p class='text-center timer-p'>
+            Time Remaining: <span class='timer'> ${counter} </span>
+        </p>
+        <p class='text-center'> 
+        Correct! The answer is: ${correctAnswers[questionCounter]} </p>
+        ${imageArray[questionCounter]}
+
+        `
+        main.innerHTML = gameHTML;
+        setTimeout(Helper.wait, 3000);
+    };
+
+    static loss() {
+        incorrect++;
+        gameHTML = `
+
+        <p class='text-center timer-p'>
+        Time Remaining: <span class='timer'> ${counter} </span>
+        </p>
+        <p class='text-center'>Wrong! The correct answer is:
+        ${correctAnswers[questionCounter]}</p>
+        <img class='center-block img-wrong' src='../assets/images/x.gif'>
+
+        `
+        main.innerHTML = gameHTML;
+        setTimeout(Helper.wait, 3000);
+    };
 
     static questions() {
         gameHTML = `
@@ -32,9 +75,32 @@ class UI {
 
         `;
         main.innerHTML = gameHTML;
+        
     };
+    
 
     static final() {};
+
+        //TODO: answer click event
+    static screen() {
+        document.querySelectorAll('.answer').forEach((answer) => {
+            answer.addEventListener('click', (e) => {
+
+                let target = e.target.textContent;
+                selecterAnswer = target;
+
+                if(selecterAnswer === correctAnswers[questionCounter]) {
+                    clearInterval(clock);
+                    UI.win();
+                } else {
+                    clearInterval(clock);
+                    UI.loss();
+                }
+
+            })
+        });
+            
+    }
 
 }
 
@@ -42,7 +108,17 @@ class Helper {
 
     static reset() {};
 
-    static wait() {};
+    static wait() {
+        if(questionCounter < 7) {
+            questionCounter++;
+            UI.questions();
+            counter = 10;
+            Helper.timer();
+            UI.screen()
+        } else {
+            UI.final();
+        }
+    };
 
     static timer() {
         clock = setInterval(thirtySeconds, 1000);
@@ -89,30 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         UI.questions();
         Helper.timer();
-        screen();
+        UI.screen();
 
     });
-
-    //TODO: answer click event
-    let screen = () => {
-        document.querySelectorAll('.answer').forEach((answer) => {
-            answer.addEventListener('click', (e) => {
-
-                let target = e.target.textContent
-                selecterAnswer = target;
-                
-                if(selecterAnswer === correctAnswers[questionCounter]) {
-                    clearInterval(clock);
-                    UI.win();
-                } else {
-                    clearInterval(clock);
-                    UI.loss();
-                }
-
-            })
-        });
-    }
-    screen()
 
 
     //todo: reset click event

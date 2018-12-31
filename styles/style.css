@@ -1,12 +1,12 @@
 
-     body {
-      background:#333;
-      background-repeat: no-repeat;
-      background-position: cover;
-      background-size: 100%;
-      color: white;
-      font-size: 20px;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+body {
+background:#333;
+background-repeat: no-repeat;
+background-position: cover;
+background-size: 100%;
+color: white;
+font-size: 20px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 .jumbotron {
     color: white;
@@ -68,16 +68,19 @@
   }
 
   img {
+    margin: 0 auto;
+    display: flex;
     margin-top: 30px;
-    width:70%;
+    width: 300px;
+    object-fit: cover;
     border-radius: 25px;
     
   }
   .img-wrong {
     border-radius: 25px;
+    margin: 0 auto;
     margin-top: 40px;
-    width:60%;
-    
+    width:300px;
   }
   
   .first-answer {
@@ -116,13 +119,6 @@
     p {
       font-size: 18px;
       font-weight: 300;
-    }
-
-    img, .img-wrong, .answer {
-      margin-top: 30px;
-      width:100%;
-      text-align: left;
-      
     }
 
    .btn {
