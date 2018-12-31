@@ -8,7 +8,7 @@
       font-size: 20px;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
-   .jumbotron {
+.jumbotron {
     color: white;
     background-color: rgba(248, 243, 85, 0);
     opacity: .7;
@@ -22,21 +22,20 @@
   }
 
   .btn {
-    width:275px;
     padding:15px;
     font-size: 20px;
   
   }
   .main-button-container {
-    max-width: 450px;
-    margin-left: auto;
+    max-width: 80%;
+    margin: 0 auto;
   }
 
   #main {
     margin-top:10px;
-    max-width: 50%;
-    margin-left: auto;
-    color: black;
+    max-width: 80%;
+    margin: 0 auto;
+    color: white;
     font-size: 26px;
     height: 500px;;
   }
@@ -49,7 +48,8 @@
     font-size:24px;
   }
   .answer:hover {
-    background: rgba(250, 240, 99, 0.99);
+    background: rgb(67, 148, 202);
+    color: white;
   }
 
   p {
@@ -63,6 +63,7 @@
     background-color: white;
     border-radius: 4px;
     opacity: .7;
+    cursor: pointer;
 
   }
 
@@ -91,6 +92,10 @@
     margin-top: 40px;
   }
 
+  .hide {
+    display: none;
+  }
+
 
   @media all and (max-width: 575px) { 
     .timer-p {
@@ -115,7 +120,7 @@
 
     img, .img-wrong, .answer {
       margin-top: 30px;
-      width:120%;
+      width:100%;
       text-align: left;
       
     }
@@ -156,7 +161,7 @@
 
   img, .img-wrong, .answer {
     margin-top: 30px;
-    width:120%;
+    width:100%;
     text-align: left;
     
   }
@@ -182,7 +187,7 @@
 
   img, .img-wrong, .answer {
     margin-top: 30px;
-    width:120%;
+    width:100%;
     text-align: left;
     
   }

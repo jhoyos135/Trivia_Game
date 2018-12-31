@@ -17,7 +17,22 @@ class UI {
 
     static loss() {};
 
-    static questions() {};
+    static questions() {
+        gameHTML = `
+
+        <p class='text-center timer-p'>
+            Time Remaining: <span class='timer'>10</span>
+        </p>
+
+        <p class='text-center'>${questionArray[questionCounter]}</p>
+        <p class='first-answer answer'>A. ${answerArray[questionCounter][0]}</p>
+        <p class='answer'>B. ${answerArray[questionCounter][1]}</p>
+        <p class='answer'>C. ${answerArray[questionCounter][2]}</p>
+        <p class='answer'>D. ${answerArray[questionCounter][3]}</p>
+
+        `;
+        main.innerHTML = gameHTML;
+    };
 
     static final() {};
 
@@ -29,19 +44,76 @@ class Helper {
 
     static wait() {};
 
-    static timer() {};
+    static timer() {
+        clock = setInterval(thirtySeconds, 1000);
+    
+        function thirtySeconds() {
+            if (counter === 0) {
+                clearInterval(clock);
+                UI.timeout();
+            }
+            if (counter > 0) {
+                counter--;
+            }
+    
+            document.querySelector('.timer').innerHTML = counter
+        }  
+    };
 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    let openingPage = function() {};
+    let open = () => {
+        openScreen = `
+        
+        <p class='text-center main-button-container'>
+            <a class='btn btn-secondary btn-md btn-block start-button' href='#' role='button'>
+                Start
+            </a>
+        </p>
 
-    openingPage();
+        `
+        main.innerHTML = openScreen;
+    };
+
+    open();
 
     //TODO: start click event
+    let start = document.querySelector('.start-button');
+    let jumbo = document.querySelector('.jumbotron');
+    start.addEventListener('click', function(e) {
+
+        e.preventDefault();
+        jumbo.classList.add('hide');
+
+        UI.questions();
+        Helper.timer();
+        screen();
+
+    });
 
     //TODO: answer click event
+    let screen = () => {
+        document.querySelectorAll('.answer').forEach((answer) => {
+            answer.addEventListener('click', (e) => {
+
+                let target = e.target.textContent
+                selecterAnswer = target;
+                
+                if(selecterAnswer === correctAnswers[questionCounter]) {
+                    clearInterval(clock);
+                    UI.win();
+                } else {
+                    clearInterval(clock);
+                    UI.loss();
+                }
+
+            })
+        });
+    }
+    screen()
+
 
     //todo: reset click event
 
