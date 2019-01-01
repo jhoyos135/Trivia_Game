@@ -11,6 +11,7 @@ let main = document.querySelector('#main');
 
 class UI {
 
+    // timeout display
     static timeout() {
         unanswered++;
         gameHTML = `
@@ -20,7 +21,7 @@ class UI {
         </p>
         <p class='text-center'>You ran out of time! The correct answer was:
         ${correctAnswers[questionCounter]} </p>
-        <img class='center-block img-wrong' src='../assets/images/x.gif'>
+        <img class='center-block img-wrong' src='../assets/images/time.gif'>
 
         `
         main.innerHTML = gameHTML;
@@ -28,6 +29,7 @@ class UI {
 
     };
 
+    // win display
     static win() {
         correct++;
         gameHTML = `
@@ -42,8 +44,10 @@ class UI {
         `
         main.innerHTML = gameHTML;
         setTimeout(Helper.wait, 3000);
+
     };
 
+    // loss display 
     static loss() {
         incorrect++;
         gameHTML = `
@@ -51,15 +55,17 @@ class UI {
         <p class='text-center timer-p'>
         Time Remaining: <span class='timer'> ${counter} </span>
         </p>
-        <p class='text-center'>Wrong! The correct answer is:
+        <p class='text-center'>Sorry! The correct answer is:
         ${correctAnswers[questionCounter]}</p>
         <img class='center-block img-wrong' src='../assets/images/x.gif'>
 
         `
         main.innerHTML = gameHTML;
         setTimeout(Helper.wait, 3000);
+
     };
 
+    // get the questions array with the answers
     static questions() {
         gameHTML = `
 
@@ -78,7 +84,7 @@ class UI {
         
     };
     
-
+    // final display with all the results and reset button
     static final() {
         gameHTML = `
         
@@ -94,12 +100,13 @@ class UI {
 
         `
         main.innerHTML = gameHTML;
-        Helper.reset_btn();
+        Helper.reset();
+
     };
 
-        //TODO: answer click event
+    // answer click event
     static screen() {
-        document.querySelectorAll('.answer').forEach((answer) => {
+        document.querySelectorAll('.answer').forEach( (answer) => {
             answer.addEventListener('click', (e) => {
 
                 let target = e.target.textContent;
@@ -113,17 +120,15 @@ class UI {
                     UI.loss();
                 }
                 
-            })
-        });
-            
+            });
+        });    
     }
-
 }
 
 class Helper {
 
-    //todo: reset click event
-    static reset_btn() {
+    // reset function
+    static reset() {
         let reset_button = document.querySelector('.reset-button');
         reset_button.addEventListener('click', () => {
             questionCounter = 0;
@@ -137,8 +142,9 @@ class Helper {
         });
     }
 
+    // sets up the time function
     static wait() {
-        if(questionCounter < 7) {
+        if(questionCounter < questionArray.length - 1 ) {
             questionCounter++;
             UI.questions();
             counter = 10;
@@ -149,6 +155,7 @@ class Helper {
         }
     };
 
+    // timer function
     static timer() {
         clock = setInterval(tenSeconds, 1000);
     
@@ -179,14 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
 
         `
-        main.innerHTML = openScreen;
-        
-        
+
+        main.innerHTML = openScreen;   
     };
 
     open();
 
-    //TODO: start click event
+    //start click event
     let start = document.querySelector('.start-button');
     let jumbo = document.querySelector('.jumbotron');
     start.addEventListener('click', function(e) {
