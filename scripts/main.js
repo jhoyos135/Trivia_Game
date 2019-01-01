@@ -94,7 +94,7 @@ class UI {
 
         `
         main.innerHTML = gameHTML;
-        UI.reset_btn();
+        Helper.reset_btn();
     };
 
         //TODO: answer click event
@@ -118,27 +118,24 @@ class UI {
             
     }
 
-    //todo: reset click event
-    static reset_btn() {
-        let reset_button = document.querySelector('.reset-button');
-        reset_button.addEventListener('click', () => {
-            Helper.reset();
-        });
-    }
-
 }
 
 class Helper {
 
-    static reset() {
-        questionCounter = 0;
-        correct = 0;
-        incorrect = 0;
-        unanswered = 0;
-        counter = 10;
-        UI.questions();
-        Helper.timer();
-    };
+    //todo: reset click event
+    static reset_btn() {
+        let reset_button = document.querySelector('.reset-button');
+        reset_button.addEventListener('click', () => {
+            questionCounter = 0;
+            correct = 0;
+            incorrect = 0;
+            unanswered = 0;
+            counter = 10;
+            Helper.timer();
+            UI.questions();
+            UI.screen();
+        });
+    }
 
     static wait() {
         if(questionCounter < 7) {
@@ -146,7 +143,7 @@ class Helper {
             UI.questions();
             counter = 10;
             Helper.timer();
-            UI.screen()
+            UI.screen();
         } else {
             UI.final();
         }
@@ -183,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         `
         main.innerHTML = openScreen;
+        
+        
     };
 
     open();
