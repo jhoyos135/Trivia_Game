@@ -18,7 +18,7 @@ class UI {
         <p class='text-center timer-p'>
             Time Remaining: <span class='timer'> ${counter} </span>
         </p>
-        <p class='text-center'>You ran out of time!  The correct answer was:
+        <p class='text-center'>You ran out of time! The correct answer was:
         ${correctAnswers[questionCounter]} </p>
         <img class='center-block img-wrong' src='../assets/images/x.gif'>
 
@@ -79,7 +79,23 @@ class UI {
     };
     
 
-    static final() {};
+    static final() {
+        gameHTML = `
+        
+        <p class='text-center mt-5'>All done, here's how you did!</p>
+            <p class='summary-correct'>Correct Answers: ${correct} </p>
+            <p> Wrong Answers: ${incorrect} </p>
+            <p> Unanswered: ${unanswered} </p>
+        <p class='text-center reset-button-container'>
+            <a class='btn btn-danger btn-md btn-block reset-button' href='#' role='button'>
+            Reset
+            </a>
+        </p>
+
+        `
+        main.innerHTML = gameHTML;
+        UI.reset_btn();
+    };
 
         //TODO: answer click event
     static screen() {
@@ -96,17 +112,33 @@ class UI {
                     clearInterval(clock);
                     UI.loss();
                 }
-
+                
             })
         });
             
+    }
+
+    //todo: reset click event
+    static reset_btn() {
+        let reset_button = document.querySelector('.reset-button');
+        reset_button.addEventListener('click', () => {
+            Helper.reset();
+        });
     }
 
 }
 
 class Helper {
 
-    static reset() {};
+    static reset() {
+        questionCounter = 0;
+        correct = 0;
+        incorrect = 0;
+        unanswered = 0;
+        counter = 10;
+        UI.questions();
+        Helper.timer();
+    };
 
     static wait() {
         if(questionCounter < 7) {
@@ -121,9 +153,9 @@ class Helper {
     };
 
     static timer() {
-        clock = setInterval(thirtySeconds, 1000);
+        clock = setInterval(tenSeconds, 1000);
     
-        function thirtySeconds() {
+        function tenSeconds() {
             if (counter === 0) {
                 clearInterval(clock);
                 UI.timeout();
@@ -144,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         openScreen = `
         
         <p class='text-center main-button-container'>
-            <a class='btn btn-secondary btn-md btn-block start-button' href='#' role='button'>
+            <a class='btn btn-success btn-md btn-block start-button' href='#' role='button'>
                 Start
             </a>
         </p>
@@ -168,9 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         UI.screen();
 
     });
-
-
-    //todo: reset click event
 
 });
 
