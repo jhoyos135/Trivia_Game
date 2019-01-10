@@ -229,7 +229,7 @@ const answerArray = [
         ["The Bodyguard","Pulp Fiction","Clueless","Armageddon"], ];
 
 const imageArray = new Array(); 
-    imageArray[0] = "<img class='center-block' src='../assets/images/independence.jpg'>";
+    imageArray[0] = "<img class='center-block' src='/assets/images/independence.jpg'>";
     imageArray[1] = "<img class='center-block' src='../assets/images/air.jpg'>"; 
     imageArray[2] = "<img class='center-block' src='../assets/images/scream.jpg'>"; 
     imageArray[3] = "<img class='center-block' src='../assets/images/gump.jpg'>";  
