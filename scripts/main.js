@@ -21,7 +21,7 @@ class UI {
         </p>
         <p class='text-center'>You ran out of time! The correct answer was:
         ${correctAnswers[questionCounter]} </p>
-        <img class='center-block img-wrong' src='../assets/images/time.gif'>
+        <img class='center-block img-wrong' src='./assets/images/time.gif'>
 
         `
         main.innerHTML = gameHTML;
@@ -57,7 +57,7 @@ class UI {
         </p>
         <p class='text-center'>Sorry! The correct answer is:
         ${correctAnswers[questionCounter]}</p>
-        <img class='center-block img-wrong' src='../assets/images/x.gif'>
+        <img class='center-block img-wrong' src='./assets/images/x.gif'>
 
         `
         main.innerHTML = gameHTML;
