@@ -229,14 +229,14 @@ const answerArray = [
         ["The Bodyguard","Pulp Fiction","Clueless","Armageddon"], ];
 
 const imageArray = new Array(); 
-    imageArray[0] = "<img class='center-block' src='/assets/images/independence.jpg'>";
-    imageArray[1] = "<img class='center-block' src='/assets/images/air.jpg'>"; 
-    imageArray[2] = "<img class='center-block' src='/assets/images/scream.jpg'>"; 
-    imageArray[3] = "<img class='center-block' src='/assets/images/gump.jpg'>";  
-    imageArray[4] = "<img class='center-block' src='/assets/images/usual.jpg'>"; 
-    imageArray[5] = "<img class='center-block' src='/assets/images/pretty.jpg'>"; 
-    imageArray[6] = "<img class='center-block' src='/assets/images/space.jpg'>"; 
-    imageArray[7] = "<img class='center-block' src='/assets/images/guard.jpg'>"; 
+    imageArray[0] = "<img class='center-block' src='./assets/images/independence.jpg'>";
+    imageArray[1] = "<img class='center-block' src='./assets/images/air.jpg'>"; 
+    imageArray[2] = "<img class='center-block' src='./assets/images/scream.jpg'>"; 
+    imageArray[3] = "<img class='center-block' src='./assets/images/gump.jpg'>";  
+    imageArray[4] = "<img class='center-block' src='./assets/images/usual.jpg'>"; 
+    imageArray[5] = "<img class='center-block' src='./assets/images/pretty.jpg'>"; 
+    imageArray[6] = "<img class='center-block' src='./assets/images/space.jpg'>"; 
+    imageArray[7] = "<img class='center-block' src='./assets/images/guard.jpg'>"; 
 
 const correctAnswers = 
     [ "C. Captain Steven Hiller", 
